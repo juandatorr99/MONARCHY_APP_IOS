@@ -1,0 +1,6 @@
+framework module Pods_Guardianes_Monarca {
+  umbrella header "Pods-Guardianes Monarca-umbrella.h"
+
+  export *
+  module * { export * }
+}
