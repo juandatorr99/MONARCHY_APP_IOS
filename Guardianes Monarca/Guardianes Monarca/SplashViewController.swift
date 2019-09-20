@@ -12,19 +12,22 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Show the selected screen
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        // Instantiate the selected screen view controller
-        let nextViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-        
-        // Every storyboard must have a NavigationController named "MainNavigation"
-        let navigationController = storyboard.instantiateViewController(withIdentifier: "MainNavigation") as! UINavigationController
-        navigationController.setViewControllers([nextViewController], animated: true)
-        
-        // Present the navigaton controller and within it, the view controller
-        self.present(navigationController, animated: false)
+//
+//        // Show the selected screen
+//        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//        // Instantiate the selected screen view controller
+//        let nextViewController: UIViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+//
+//        // Every storyboard must have a NavigationController named "MainNavigation"
+//        let navigationController = storyboard.instantiateViewController(withIdentifier: "MainNavigation") as! UINavigationController
+//        navigationController.setViewControllers([nextViewController], animated: true)
+//
+//        // Present the navigaton controller and within it, the view controller
+//        self.present(navigationController, animated: false)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+3){
+            self.performSegue(withIdentifier: "LoginViewController", sender: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

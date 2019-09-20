@@ -108,7 +108,6 @@
 				744CD331231CBD5F0028FD12 /* Frameworks */,
 				744CD332231CBD5F0028FD12 /* Resources */,
 				FF62A1E1BDFC524D6BA85D5C /* [CP] Embed Pods Frameworks */,
-				881F2C23CD562797D0785237 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,23 +171,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		881F2C23CD562797D0785237 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C783E149178753F3BD85C356 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
