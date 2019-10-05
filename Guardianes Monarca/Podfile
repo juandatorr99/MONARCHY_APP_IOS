@@ -8,8 +8,13 @@ target 'Guardianes Monarca' do
 
   # Pods for Guardianes Monarca
   
-  pod 'FBSDKLoginKit'
+  
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'MBProgressHUD'
+  pod 'Firebase/Firestore'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 end

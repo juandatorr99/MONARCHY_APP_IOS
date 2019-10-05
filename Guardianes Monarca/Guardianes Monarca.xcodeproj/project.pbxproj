@@ -7,18 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740AE23F2346FD6A00505BDF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AE23E2346FD6A00505BDF /* LocationViewController.swift */; };
+		741FCB922348015200C0F090 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741FCB912348015200C0F090 /* File.swift */; };
 		744CD338231CBD5F0028FD12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744CD337231CBD5F0028FD12 /* AppDelegate.swift */; };
 		744CD33A231CBD5F0028FD12 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744CD339231CBD5F0028FD12 /* SplashViewController.swift */; };
 		744CD33D231CBD5F0028FD12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 744CD33B231CBD5F0028FD12 /* Main.storyboard */; };
 		744CD33F231CBD620028FD12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 744CD33E231CBD620028FD12 /* Assets.xcassets */; };
 		744CD342231CBD620028FD12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 744CD340231CBD620028FD12 /* LaunchScreen.storyboard */; };
+		7462AD70233C543800748583 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7462AD6F233C543800748583 /* AccountViewController.swift */; };
+		74856276233EC77D00E5F4BA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74856275233EC77D00E5F4BA /* Utils.swift */; };
 		7497A2BC231F76FD00713E2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7497A2BB231F76FD00713E2E /* LoginViewController.swift */; };
 		74BC7895231DBCFC00AF4DA5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BC7894231DBCFC00AF4DA5 /* GoogleService-Info.plist */; };
+		74FA3D582334843300FC88EB /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FA3D572334843300FC88EB /* SignUpViewController.swift */; };
 		A8973C294B9CB46F085663FF /* Pods_Guardianes_Monarca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69D088D2658B3BBAE5AD5B4 /* Pods_Guardianes_Monarca.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0817C6DF19E4A932594C984A /* Pods-Guardianes Monarca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardianes Monarca.release.xcconfig"; path = "Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca.release.xcconfig"; sourceTree = "<group>"; };
+		740AE23E2346FD6A00505BDF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		741FCB912348015200C0F090 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		744CD334231CBD5F0028FD12 /* Guardianes Monarca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardianes Monarca.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		744CD337231CBD5F0028FD12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		744CD339231CBD5F0028FD12 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -26,9 +33,12 @@
 		744CD33E231CBD620028FD12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		744CD341231CBD620028FD12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		744CD343231CBD620028FD12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7497A2BB231F76FD00713E2E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		7462AD6F233C543800748583 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		74856275233EC77D00E5F4BA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		7497A2BB231F76FD00713E2E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7497A2BD231F797800713E2E /* Guardianes Monarca.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Guardianes Monarca.entitlements"; sourceTree = "<group>"; };
 		74BC7894231DBCFC00AF4DA5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		74FA3D572334843300FC88EB /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		980A6233751043A877848EBC /* Pods-Guardianes Monarca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guardianes Monarca.debug.xcconfig"; path = "Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca.debug.xcconfig"; sourceTree = "<group>"; };
 		C69D088D2658B3BBAE5AD5B4 /* Pods_Guardianes_Monarca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guardianes_Monarca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -54,6 +64,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		740AE23D2346FD5600505BDF /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				740AE23E2346FD6A00505BDF /* LocationViewController.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		744CD32B231CBD5F0028FD12 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +93,8 @@
 		744CD336231CBD5F0028FD12 /* Guardianes Monarca */ = {
 			isa = PBXGroup;
 			children = (
+				74856274233EC75B00E5F4BA /* Utils */,
+				7462AD6D233C53E800748583 /* ViewController */,
 				7497A2BD231F797800713E2E /* Guardianes Monarca.entitlements */,
 				74BC7894231DBCFC00AF4DA5 /* GoogleService-Info.plist */,
 				744CD337231CBD5F0028FD12 /* AppDelegate.swift */,
@@ -83,9 +103,44 @@
 				744CD33E231CBD620028FD12 /* Assets.xcassets */,
 				744CD340231CBD620028FD12 /* LaunchScreen.storyboard */,
 				744CD343231CBD620028FD12 /* Info.plist */,
-				7497A2BB231F76FD00713E2E /* LoginViewController.swift */,
 			);
 			path = "Guardianes Monarca";
+			sourceTree = "<group>";
+		};
+		7462AD6D233C53E800748583 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				740AE23D2346FD5600505BDF /* Location */,
+				7462AD6E233C540F00748583 /* Main */,
+				74FA3D562334840A00FC88EB /* Login */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7462AD6E233C540F00748583 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7462AD6F233C543800748583 /* AccountViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		74856274233EC75B00E5F4BA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				74856275233EC77D00E5F4BA /* Utils.swift */,
+				741FCB912348015200C0F090 /* File.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		74FA3D562334840A00FC88EB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				7497A2BB231F76FD00713E2E /* LoginViewController.swift */,
+				74FA3D572334843300FC88EB /* SignUpViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		D2FC87070C88E42395740D6E /* Frameworks */ = {
@@ -108,6 +163,7 @@
 				744CD331231CBD5F0028FD12 /* Frameworks */,
 				744CD332231CBD5F0028FD12 /* Resources */,
 				FF62A1E1BDFC524D6BA85D5C /* [CP] Embed Pods Frameworks */,
+				699C8A61FF955470E629A557 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,6 +227,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		699C8A61FF955470E629A557 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Guardianes Monarca/Pods-Guardianes Monarca-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C783E149178753F3BD85C356 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,9 +290,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740AE23F2346FD6A00505BDF /* LocationViewController.swift in Sources */,
 				7497A2BC231F76FD00713E2E /* LoginViewController.swift in Sources */,
+				7462AD70233C543800748583 /* AccountViewController.swift in Sources */,
 				744CD33A231CBD5F0028FD12 /* SplashViewController.swift in Sources */,
+				74FA3D582334843300FC88EB /* SignUpViewController.swift in Sources */,
+				741FCB922348015200C0F090 /* File.swift in Sources */,
 				744CD338231CBD5F0028FD12 /* AppDelegate.swift in Sources */,
+				74856276233EC77D00E5F4BA /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +450,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23MLSK3SZD;
 				INFOPLIST_FILE = "Guardianes Monarca/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -392,6 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23MLSK3SZD;
 				INFOPLIST_FILE = "Guardianes Monarca/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

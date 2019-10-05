@@ -41,16 +41,16 @@
 "LoginButton.LoggedInAs" = "Logged in as %@";
 
 /* The short label for the FBSDKLoginButton when the user is currently logged out */
-"LoginButton.LogIn" = "Log in";
+"LoginButton.LogIn" = "Inicio de Sesión";
 
 /* The long label for the FBSDKLoginButton when the user is currently logged out */
-"LoginButton.LogInContinue" = "Continue with Facebook";
+"LoginButton.LogInContinue" = "Iniciar Sesión con Facebook";
 
 /* The long label for the FBSDKLoginButton when the user is currently logged out */
-"LoginButton.LogInLong" = "Log in with Facebook";
+"LoginButton.LogInLong" = "Iniciar Sesión con Facebook";
 
 /* The label for the FBSDKLoginButton when the user is currently logged in */
-"LoginButton.LogOut" = "Log out";
+"LoginButton.LogOut" = "Cerrar Sesion";
 
 /* The user facing error message when the app slider has been disabled and login fails. */
 "LoginError.SystemAccount.Disabled" = "Access has not been granted to the Facebook account. Verify device settings.";
