@@ -50,13 +50,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
                           db.collection("usuarios").document(uid).setData([
                            "nombre":name,
                               "apellido":lastName,
-                              "email":email
+                              "email":email,
+                            "roles":[1]
                           ]){ (error:Error?) in
                               if let error = error{
                                   print("\(error.localizedDescription)")
                               }else{
                                 print("Document succesfully created and written")
-                                self.navigationController?.popToRootViewController(animated: false)
+                                self.navigationController?.popViewController(animated: true)
                               }
                               
                           }
@@ -108,7 +109,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
                            db.collection("usuarios").document(uid).setData([
                             "nombre":info["first_name"],
                             "apellido":info["last_name"] as? String,
-                               "email":info["email"] as? String
+                               "email":info["email"] as? String,
+                            "roles":[1]
                                
                            ]){ (error:Error?) in
                                if let error = error{
@@ -125,7 +127,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
 
                 
                 
-                self.navigationController?.popToRootViewController(animated: false)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
@@ -165,6 +167,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
         buttonSignInGoogle.layer.cornerRadius=10
         buttonSignInGoogle.layer.masksToBounds=true
         GIDSignIn.sharedInstance().delegate = self
+        self.navigationController?.navigationBar.backItem?.title = "Atrás"
     }
     
     @IBAction func buttonLoginPressed(_ sender: Any) {
@@ -182,9 +185,9 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
         Auth.auth().signIn(withEmail: tFEmail.text!, password: tFPassword.text!) { (user, error) in
             if user != nil{
                 print("login")
-                self.navigationController?.popToRootViewController(animated: false)
+                self.navigationController?.popViewController(animated: false)
             }else{
-                let alert = UIAlertController(title: "There was a problem", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "Credenciales Incorrectas", message: "Revisa tu correo y/o contraseña", preferredStyle: .alert)
                 let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okButton)
                 self.present(alert,animated: true,completion: nil)
@@ -194,14 +197,20 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden=true
+        
         super.viewWillAppear(animated)
-        addObservers()
+//        addObservers()
+        if CheckInternet.Connection(){
+            
+        }else{
+            createAlert(view_controller: self, title: "Sin Conexion", message: "No hay conexion a Internet")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        removeObservers()
+//        removeObservers()
+        
     }
     
     private func configureTapGesture(){
@@ -215,21 +224,8 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
         view.endEditing(true)
     }
     
-    //Adding Observers to Show and Hide Keyboard
-    func addObservers(){
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil){
-            notification in
-            self.keyboardWillShow(notification:notification)
-        }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil){
-            notification in
-            self.keyboardWillHide(notification:notification)
-        }
-    }
-    //Remove Observers
-    func removeObservers(){
-        NotificationCenter.default.removeObserver(self)
-    }
+   
+    
     
     //Methods to handle the keyboarWillShow notification
     func keyboardWillShow(notification:Notification){
@@ -242,9 +238,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
     }
     
     //When keyboard is hidden
-    func keyboardWillHide(notification:Notification){
-        scrollView.contentInset=UIEdgeInsets.zero
-    }
+   
     
     private func configureTextFields(){
         tFEmail.delegate=self as? UITextFieldDelegate
@@ -259,7 +253,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
                return
            }
           if tFPassword.text == "" {
-              self.createAlert(view_controller: self, title: "Error", message: "Ingresa su peso en kg")
+              self.createAlert(view_controller: self, title: "Error", message: "Ingresa su contraseña")
               return
           }
 

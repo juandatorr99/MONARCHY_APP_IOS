@@ -15,52 +15,83 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var latitudeLocation:Double = 0.0
     var longitudeLocation:Double = 0.0
-    
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
+        //Activity Indicator
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        
+        view.addSubview(activityIndicator)
+        
+    
+    }
+    override func viewDidAppear(_ animated: Bool) {
         
         if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
-                self.locationManager.stopUpdatingLocation()
-            })
-        
+                    locationManager.delegate = self
+                    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                    
+        //            DispatchQueue.main.asyncAfter(deadline: .now() + 15, execute: {
+        //                self.locationManager.stopUpdatingLocation()
+        //            })
+                
+                }else{
+                    locationManager.stopUpdatingLocation()
+                }
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        print("Stopped updating")
     }
-    
-    
     
     @IBAction func registerLocationButterfly(_ sender: Any) {
-        
-        
-        
-            
-            if(!(latitudeLocation==0.0)){
+        activityIndicator.startAnimating()
+            if CheckInternet.Connection(){
+                       
+                   }else{
+                       createAlert(view_controller: self, title: "Sin Conexion", message: "No hay conexion a Internet")
+                   }
+            if CLLocationManager.locationServicesEnabled(){
+                locationManager.startUpdatingLocation()
+            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            print("started")
+            if(!(self.latitudeLocation==0.0)){
+                print("startedRegistering")
                 var ref: DocumentReference? = nil
                 let db = Firestore.firestore()
                ref = db.collection("localizacion").addDocument(data:[
-                 "latitud":latitudeLocation,
-                 "longitud":longitudeLocation,
+                "latitud":self.latitudeLocation,
+                "longitud":self.longitudeLocation,
                  "fecha":Timestamp(date: Date())
                     
                     
                 ]){ err in
                     if let err = err {
                         print("Error adding document: \(err)")
+                        self.activityIndicator.stopAnimating()
                         self.createAlert(view_controller: self, title: "Error", message: "Error Ubicacion")
                     } else {
                         print("Document added with ID: \(ref!.documentID)")
                         if Auth.auth().currentUser==nil {
+                            self.activityIndicator.stopAnimating()
                             self.createAlert(view_controller: self, title: "Registro Exitoso", message: "Haz registrado una Mariposa Monarca\nGracias por tu apoyo a su concervacion.")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                                            self.locationManager.stopUpdatingLocation()
+                                        })
                         }else{
+                            self.activityIndicator.stopAnimating()
                         self.createAlert(view_controller: self, title: "Registro Exitoso", message: "Haz registrado una Mariposa Monarca\nGracias por tu apoyo a su concervacion.\nHaz ganado 50 puntos!")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                                self.locationManager.stopUpdatingLocation()
+                                print("Stopped updating")
+                            })
                         }
                         Model.sharedInstance.addPoints(pointsToAdd: 50)
                             
@@ -72,7 +103,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
                         }
                        
                     }
-                
+    })
             }
     
     
@@ -89,7 +120,9 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
             showDisableLocationPopUp()
         }
     }
-    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error")
+    }
     
     func showDisableLocationPopUp(){
         createAlert(view_controller: self, title: "El acceso a la ubicacion fue deshabilitada", message: "Necesitamos tu ubicacion para registrar la mariposa")
@@ -107,14 +140,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
 }
+

@@ -60,9 +60,36 @@ class Model :NSObject{
     }
     
     
+    func getUserInfo()->[String : AnyObject]{
+        var info:[String : AnyObject]?=[:]
+        let db = Firestore.firestore()
+        let user = Auth.auth().currentUser
+        if let user = user {
+            
+          // The user's ID, unique to the Firebase project.
+          // Do NOT use this value to authenticate with your backend server,
+          // if you have one. Use getTokenWithCompletion:completion: instead.
+            let uid = user.uid
+            let actualUser = db.collection("usuarios").document(uid)
+
+            
+            actualUser.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.data()
+                    info = dataDescription! as [String : AnyObject]
+
+                    
+                    
+                } else {
+                    print("Document does not exist")
+                    
+                }
+            }
+            return info!
+    }
     
-    
-    
+    return info!
 
     
+}
 }

@@ -45,7 +45,8 @@ class SignUpViewController: UIViewController, UITextViewDelegate {
             db.collection("usuarios").document(uid).setData([
                 "nombre":self.tFName.text!,
                 "apellido":self.tFLastName.text!,
-                "email":self.tFEmail.text!
+                "email":self.tFEmail.text!,
+                "roles":[1]
             ]){ (error:Error?) in
                 if let error = error{
                     print("\(error.localizedDescription)")
@@ -121,7 +122,7 @@ class SignUpViewController: UIViewController, UITextViewDelegate {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden=true
+        
         super.viewWillAppear(animated)
         addObservers()
         

@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions:
         [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UITabBar.appearance().tintColor = .orange
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = "685081259384-j6ekou51mfcombe54685kelslmo40ncq.apps.googleusercontent.com"
         
