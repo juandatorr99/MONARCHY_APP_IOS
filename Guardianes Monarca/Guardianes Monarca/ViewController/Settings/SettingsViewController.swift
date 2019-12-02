@@ -50,7 +50,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
             
         case 2:
-            cell.label.text = "Registrar Compañia"
+            cell.label.text = "Codigo de Compañia"
             return cell
 
         case 3:
@@ -58,7 +58,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
 
         case 4:
-           cell.label.text = "Terminos y Condiciones"
+           cell.label.text = "Términos y Condiciones"
            return cell
 
         case 5:
@@ -95,6 +95,13 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                     performSegue(withIdentifier: "registerCompanyCode", sender: self)
                     tableView.deselectRow(at: indexPath, animated: true)
             }
+                
+            break
+            case 4:
+                
+                performSegue(withIdentifier: "termsAndConditions", sender: self)
+                tableView.deselectRow(at: indexPath, animated: true)
+            
                 
             break
             default:

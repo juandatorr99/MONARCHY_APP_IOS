@@ -11,131 +11,11 @@ import FirebaseAuth
 import GoogleSignIn
 import Firebase
 import FirebaseFirestore
-import FBSDKLoginKit
+
 
 @objc(LoginViewController)
-class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelegate {
+class LoginViewController: UIViewController,GIDSignInDelegate {
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-                    withError error: Error!) {
-            if let error = error {
-                if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                  print("The user has not signed in before or they have since signed out.")
-                } else {
-                  print("\(error.localizedDescription)")
-                }
-                
-                return
-              }
-           
-           guard let authentication = user.authentication else { return }
-           let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,accessToken: authentication.accessToken)
-           
-           Auth.auth().signIn(with: credential) { (result,error) in
-           if let error = error {
-               print("Error")
-               }
-                
-                let name = user.profile.givenName!
-               let lastName = user.profile.familyName!
-                let email = user.profile.email!
-                // [START_EXCLUDE]
-                NotificationCenter.default.post(
-                  name: Notification.Name(rawValue: "ToggleAuthUINotification"),
-                  object: nil,
-                  userInfo: ["statusText": "Signed in user:\n\(name+lastName)"])
-                // [END_EXCLUDE]
-               guard let uid = result?.user.uid else{return}
-               let db = Firestore.firestore()
-                          db.collection("usuarios").document(uid).setData([
-                           "nombre":name,
-                              "apellido":lastName,
-                              "email":email,
-                            "roles":[1]
-                          ]){ (error:Error?) in
-                              if let error = error{
-                                  print("\(error.localizedDescription)")
-                              }else{
-                                print("Document succesfully created and written")
-                                self.navigationController?.popViewController(animated: true)
-                              }
-                              
-                          }
-           }
-                                                                
-              
-           
-       
-          }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-              withError error: Error!) {
-      // Perform any operations when the user disconnects from app here.
-      // [START_EXCLUDE]
-      NotificationCenter.default.post(
-        name: Notification.Name(rawValue: "ToggleAuthUINotification"),
-        object: nil,
-        userInfo: ["statusText": "User has disconnected."])
-      // [END_EXCLUDE]
-    }
-    
-    func loginButton(_ loginButton:  FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if error != nil{
-            print(error!)
-            return
-        }
-        
-        print("Succesfully")
-        let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
-        
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-          if let error = error {
-            print(error)
-            return
-          }
-            
-            GraphRequest(graphPath: "/me", parameters: ["fields": "id, first_name,last_name, email"]).start{
-                (connection,result,err) in
-                if error != nil{
-                    print (error!)
-                    return
-                }
-                
-                let info = result as! [String : AnyObject]
-                
-                //Sign in with collections
-                guard let uid = authResult?.user.uid else{return}
-                let db = Firestore.firestore()
-                           db.collection("usuarios").document(uid).setData([
-                            "nombre":info["first_name"],
-                            "apellido":info["last_name"] as? String,
-                               "email":info["email"] as? String,
-                            "roles":[1]
-                               
-                           ]){ (error:Error?) in
-                               if let error = error{
-                                   print("\(error.localizedDescription)")
-                               }else{
-                                   print("Document succesfully created and written")
-
-                                
-                               }
-
-                           }
-//                
-                
-
-                
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("Logged Out of Facebook")
-    }
     
     
     
@@ -145,7 +25,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var loginFB: UIView!
     @IBOutlet weak var tFEmail: UITextField!
     @IBOutlet weak var tFPassword: UITextField!
     
@@ -157,19 +36,75 @@ class LoginViewController: UIViewController, LoginButtonDelegate,GIDSignInDelega
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         
-        let loginFBButton = FBLoginButton()
-        
-        loginFB.addSubview(loginFBButton)
-        loginFBButton.frame = CGRect(x: 0, y: 0, width: loginFB.frame.width-35, height: loginFB.frame.height)
-        loginFBButton.delegate = self
-        loginFBButton.permissions = ["email","public_profile "]
-        
+//
         buttonSignInGoogle.layer.cornerRadius=10
         buttonSignInGoogle.layer.masksToBounds=true
         GIDSignIn.sharedInstance().delegate = self
         self.navigationController?.navigationBar.backItem?.title = "Atrás"
     }
-    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+                        withError error: Error!) {
+                if let error = error {
+                    if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                      print("The user has not signed in before or they have since signed out.")
+                    } else {
+                      print("\(error.localizedDescription)")
+                    }
+                    
+                    return
+                  }
+               
+               guard let authentication = user.authentication else { return }
+               let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,accessToken: authentication.accessToken)
+               
+               Auth.auth().signIn(with: credential) { (authResult,error) in
+               if let error = error {
+                   print("Error")
+                   }
+                    
+                    let name = user.profile.givenName!
+                   let lastName = user.profile.familyName!
+                    let email = user.profile.email!
+                    // [START_EXCLUDE]
+                    NotificationCenter.default.post(
+                      name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+                      object: nil,
+                      userInfo: ["statusText": "Signed in user:\n\(name+lastName)"])
+                    // [END_EXCLUDE]
+                   guard let uid = authResult?.user.uid else{return}
+                   let db = Firestore.firestore()
+                              db.collection("usuarios").document(uid).setData([
+                               "nombre":name,
+                                  "apellido":lastName,
+                                  "email":email,
+                                "roles":[1]
+                              ]){ (error:Error?) in
+                                  if let error = error{
+                                      print("\(error.localizedDescription)")
+                                  }else{
+                                    print("Document succesfully created and written")
+                                    self.navigationController?.popViewController(animated: true)
+                                  }
+                                  
+                              }
+               }
+              }
+        
+        func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+                  withError error: Error!) {
+          // Perform any operations when the user disconnects from app here.
+          // [START_EXCLUDE]
+          NotificationCenter.default.post(
+            name: Notification.Name(rawValue: "ToggleAuthUINotification"),
+            object: nil,
+            userInfo: ["statusText": "User has disconnected."])
+          // [END_EXCLUDE]
+        }
+        
+       
+        
+       
+        
     @IBAction func buttonLoginPressed(_ sender: Any) {
         validateFields()
     }

@@ -11,6 +11,8 @@
 		740AE23F2346FD6A00505BDF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AE23E2346FD6A00505BDF /* LocationViewController.swift */; };
 		741B68182361EFD300B3DDA0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741B68172361EFD300B3DDA0 /* EditProfileViewController.swift */; };
 		741FCB922348015200C0F090 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741FCB912348015200C0F090 /* File.swift */; };
+		74201BB32388AF77001EDFA4 /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74201BB22388AF77001EDFA4 /* RewardsViewController.swift */; };
+		743A0016239074A4005406D4 /* RewardsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743A0015239074A4005406D4 /* RewardsTableViewCell.swift */; };
 		744CD338231CBD5F0028FD12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744CD337231CBD5F0028FD12 /* AppDelegate.swift */; };
 		744CD33A231CBD5F0028FD12 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744CD339231CBD5F0028FD12 /* SplashViewController.swift */; };
 		744CD33D231CBD5F0028FD12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 744CD33B231CBD5F0028FD12 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		740AE23E2346FD6A00505BDF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		741B68172361EFD300B3DDA0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		741FCB912348015200C0F090 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		74201BB22388AF77001EDFA4 /* RewardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsViewController.swift; sourceTree = "<group>"; };
+		743A0015239074A4005406D4 /* RewardsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsTableViewCell.swift; sourceTree = "<group>"; };
 		744CD334231CBD5F0028FD12 /* Guardianes Monarca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guardianes Monarca.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		744CD337231CBD5F0028FD12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		744CD339231CBD5F0028FD12 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				7462AD6F233C543800748583 /* AccountViewController.swift */,
+				74201BB22388AF77001EDFA4 /* RewardsViewController.swift */,
+				743A0015239074A4005406D4 /* RewardsTableViewCell.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -365,6 +371,8 @@
 				74BB54B323638111004F7D84 /* SeedsViewController.swift in Sources */,
 				7470F690235019FD009F87E2 /* RecoverPasswordViewController.swift in Sources */,
 				74BB54B523638133004F7D84 /* SeedsTableViewCell.swift in Sources */,
+				74201BB32388AF77001EDFA4 /* RewardsViewController.swift in Sources */,
+				743A0016239074A4005406D4 /* RewardsTableViewCell.swift in Sources */,
 				74CFE796236280E800CDD3ED /* RegisterCompanyCodeViewController.swift in Sources */,
 				744CD338231CBD5F0028FD12 /* AppDelegate.swift in Sources */,
 				748BDD3D23566ED5005C6A48 /* EventsCollectionViewCell.swift in Sources */,

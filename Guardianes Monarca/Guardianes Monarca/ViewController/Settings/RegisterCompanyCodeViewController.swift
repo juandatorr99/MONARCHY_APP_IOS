@@ -48,7 +48,7 @@ class RegisterCompanyCodeViewController: UIViewController {
                             let dataDescription = document.data()
                             self.info = dataDescription! as [String : AnyObject]
                             
-                            self.tFCodigoCompañia.text = self.info!["codigo"] as? String ?? ""
+                            self.tFCodigoCompañia.text = self.info!["idCompania"] as? String ?? ""
                             self.editCompanyLabel.text = "Editar Codigo de Compañia"
                             self.buttonRegister.setTitle("Editar", for: .normal)
                         } else {
@@ -60,7 +60,7 @@ class RegisterCompanyCodeViewController: UIViewController {
         }
     @IBAction func registerCodePressed(_ sender: Any) {
         let code = self.tFCodigoCompañia.text
-        if tFCodigoCompañia.text == "\(String(describing: info?["codigo"]) )"{
+        if tFCodigoCompañia.text == "\(String(describing: info?["idCompania"]) )"{
             navigationController?.popViewController(animated: true)
         }else if  tFCodigoCompañia.text == ""{
             self.createAlert(view_controller: self, title: "Campo Vacio", message: "Debes entrar la informacion a guardar")
@@ -75,7 +75,7 @@ class RegisterCompanyCodeViewController: UIViewController {
                 documentRef.getDocument { (document, error) in
                             if let document = document, document.exists {
                                 
-                                actualUser.setData([ "codigo": code! ], merge: true)
+                                actualUser.setData([ "idCompania": code! ], merge: true)
                                 
                                 
                                 
@@ -93,5 +93,41 @@ class RegisterCompanyCodeViewController: UIViewController {
             }
         }
         
+    
+    @IBAction func deleteComapnyCode(_ sender: Any) {
+        
+        
+        if let user = user {
+            let uid = user.uid
+            
+              db.collection("usuarios").document(uid).updateData([
+                  "idCompania": FieldValue.delete(),
+              ]) { err in
+                  if let err = err {
+                      print("Error updating document: \(err)")
+                  } else {
+                      print("Document successfully updated")
+                    self.createAlert(view_controller: self, title: "Codigo Eliminado", message: "El código de compañia fué eliminado")
+                    self.navigationController?.popViewController(animated: true)
+                    self.tFCodigoCompañia.text=""
+                    self.buttonRegister.setTitle("Guardar", for: .normal)
+                  }
+              }
+          
+    
+              
+                           
+                                       
+                                       
+                                   
+        }else{
+            
+        }
+                       
+                               
+        
+    }
+    
+    
     }
     
